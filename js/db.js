@@ -52,10 +52,16 @@ if (person === undefined)
 }
 document.getElementById("invoice_").innerHTML = person.ID;
 document.getElementById("name_").innerHTML = person.NOMBRE;
+document.getElementById("authority_").innerHTML = person.AUTORIDAD;
+document.getElementById("promedy_").innerHTML = person.PROMEDIO;
+document.getElementById("promedy2_").innerHTML = person.PROMEDIO2;
 document.getElementById("date_").innerHTML = person.FECHA + " " + person.HORA;   
 
 console.log(person.ID);
 console.log(person.NOMBRE);
+console.log(person.AUTORIDAD);
+console.log(person.PROMEDIO);
+console.log(person.PROMEDIO2);
 console.log(person.FECHA); 
 console.log(person.HORA);
 console.log(document.getElementById("invoice_").innerHTML + " " + "TEST 1");
@@ -95,6 +101,9 @@ if (person === undefined)
 }
 document.getElementById("invoice_").innerHTML = person.ID;
 document.getElementById("name_").innerHTML = person.NOMBRE;
+document.getElementById("authority_").innerHTML = person.AUTORIDAD;
+document.getElementById("promedy_").innerHTML = person.PROMEDIO;
+document.getElementById("promedy2_").innerHTML = person.PROMEDIO2;
 document.getElementById("date_").innerHTML = person.FECHA + " " + person.HORA;      
 
 }
