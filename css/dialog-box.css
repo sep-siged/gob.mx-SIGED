@@ -1,0 +1,47 @@
+/* ********************************************************** */
+/*                   SEARCH DIALOG SETTINGS                   */
+/* ********************************************************** */ 
+.loading-wrapper1 {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    display: none;
+}
+.buttonload {
+    /* outline: 1px solid red; */
+    background-color: #fff; /* background */
+    border: none; /* Remove borders */
+    font-weight: 600;
+    color: rgb(44, 42, 42); /* color text */
+    padding: 40px 10px; /* Some padding */
+    font-size: 1.7vw; /* Set a font size */
+    box-shadow: 0px 0px 12px 2px rgb(90, 88, 88);
+    position: fixed;
+}
+
+/* ********************************************************** */
+/*                     SCREEN MEDIA QUERYS                    */
+/* ********************************************************** */ 
+@media only screen
+and (min-width : 100px) 
+and (max-width : 550px) {
+    .buttonload {
+        font-size: 4vw;
+    }
+}
+
+@media only screen
+and (min-width : 551px) 
+and (max-width : 840px) {
+    .buttonload {
+        font-size: 2.5vw;
+    }
+ }
