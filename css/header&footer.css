@@ -1,0 +1,310 @@
+/* ********************************************************** */
+/*                      BIG SCREEN TOPBAR                     */
+/* ********************************************************** */
+.main-topbar {
+    /* border: 2px solid rebeccapurple; */
+    background-color: #611232;
+    height: 4.8em;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    /* opacity: .4; */
+}
+ .acces-ico_ {
+    border: none;
+    width: 4.2em;
+    margin-top: 10px;
+    margin-left: 10px;
+    opacity: .94;
+    cursor: pointer;
+    z-index: 100;
+}
+.middle {
+    /* outline: 1px solid red; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex: 1;
+ }
+ .mid-content {
+    /* border: 1px solid blue; */
+    margin-top: 4px;
+    padding-left: 105px;
+ }
+.gob-logo {
+    width: 8.5em;
+}
+.right {
+    /* background-color: #33c531; */
+    /* border: 1px solid blue; */
+    margin-right: 100px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+}
+.up {
+    /* border: 1px solid aqua; */
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.linkup {
+    /* background-color: #1726b3; */
+    /* border: 1px solid red; */
+    padding: 18px 15px 18px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms;
+}
+.linkup:hover {
+    background-color: #783550;
+}
+.lup {
+    /* background-color: #2a95c3; */
+    margin-top: 10px;
+}
+.lup_ {
+    width: 1.9em;
+}
+.up- {
+    transition: 300ms;
+}
+.linkup:hover p  {
+    color: #C0B392;
+}
+/* ********************************************************** */
+/*                   BIG SCREEN RIBBON MENU                   */
+/* ********************************************************** */
+.ribbon {
+    /* border: 2px solid rgb(0, 0, 0); */
+    background-color: #A57F2C;
+    height: 3.5em;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 4.8em;
+    z-index: 10;
+    /* opacity: .3; */
+}
+.margin-control-wrapper {
+    /* outline: 2px solid rgb(5, 5, 5); */
+    width: 100%;
+    max-width: 85%;
+    display: flex;
+    flex: 1;
+}
+/* .left- {
+    border: 2px solid gold;
+} */
+
+.middle-wrapper {
+    /* background-color: blue; */
+    /* border: 2px solid rgb(15, 49, 241); */
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+.right-wrapper {
+    /* background-color: #33c531; */
+    /* border: 1px solid rgb(248, 11, 11); */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+}
+.block-wrapper {
+    /* background-color: burlywood; */
+    /* border: 1px solid rgb(218, 241, 9); */
+    height: 100%;
+    display: flex; 
+    text-align: center;
+    transition: 500ms;
+    flex-shrink: 1;
+}
+.block-wrapper:hover {
+    background-color: #B2924B;
+}
+.block0, .block1, .block2, .block3, .block4 {
+    /* border: 1px solid red;
+    background-color: rgb(171, 194, 24); */
+    padding: 18px 15px 18px 5px;
+    display: flex;
+    align-items: center;
+}
+.home, .home_ {
+    /* background-color: #D95A8D; */
+    width: 1.5em;
+    transition: 300ms;
+}
+.block-wrapper:hover .home {
+    opacity: 0;
+}
+.home_ {
+    position: absolute;
+    margin-right: 43px;
+    opacity: 0;
+}
+.block-wrapper:hover .home_ {
+    opacity: 1;
+}
+.icon-overlap {
+    position: absolute;
+    opacity: 0;
+    transition: 300ms;
+}
+.block-wrapper:hover .icon-overlap {
+    opacity: 1;
+}
+.icon1, .icon2, .icon3, .icon4  {
+    width: 1.35em;
+    margin-right: 2px;
+}
+.icon3  {
+    width: 1.1em;
+}
+.bar-chart {
+    width: 1.1em;
+}
+.alert {
+    width: 1.5em;
+}
+.alert-mod {
+    width: 1.2em;
+}
+.icon-opacity{
+    transition: 300ms;
+}
+.block-wrapper:hover .icon-opacity {
+    opacity: 0;
+}
+.lowtitles {
+    padding-left: 4px;
+    transition: 300ms;
+}
+.block-wrapper:hover .lowtitles {
+    color: #D3BF97;
+}
+/* ********************************************************** */
+/*                       FOOTER SETTINGS                      */
+/* ********************************************************** */
+.footer {
+    background-color: #611232;
+    border-bottom: 1px solid rgb(7, 21, 18);
+    min-height: auto;
+    margin-top: auto; 
+}
+.div-footer-info {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1.3fr;
+}
+.info-gob-wrap {
+    /* background-color: #FE935F;
+    outline: 2px solid #242222; */
+    padding-bottom: 70px;
+    display: flex;
+    justify-content: flex-start;   
+}
+.info-gob {
+    /* background-color: #33c531;
+    border: 1px solid white; */
+    padding-top: 40px;
+    padding-right: 20px;
+}
+.logo-wrapper {
+    /* outline: 5px solid black; */
+    padding-right: 20px;
+}
+.footer-logo {
+    /* outline: 1px solid blue; */
+    width: 15.2em;
+    margin-top: 30px;
+    margin-left: 95px;
+}
+.div-footer-img {
+    /* outline: 1px solid red; */
+    height: 50px;
+    background: url(../images/plecas.svg);
+}
+.info-rotulo, .siguenos {
+    font-size: 18px;
+    line-height: 17px;
+    padding-bottom: 25px;
+}
+.siguenos {
+    padding-top: 20px;
+}
+.infotxt {
+    font-size: 14px;
+    line-height: 22px;
+}
+.infotx {
+    font-size: 14px;
+    padding-bottom: 22px;
+}
+.more {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: initial;
+}
+.social-wrap {
+    /* background-color: #2837d7; */
+    display: flex;
+}
+.div-social-icon {
+    padding-left: 15px;
+}
+.social-icon1 {
+    width: .65em;
+}
+.social-icon2 {
+    width: 1.4em;
+}
+/* ********************************************************** */
+/*                    SCREEN MEDIA QUERYS                     */
+/* ********************************************************** */
+@media only screen
+and (min-width : 0px) 
+and (max-width : 768px) {
+    .main-topbar {
+        display: none;
+    }
+    .ribbon {
+        display: none;
+    }
+        .div-footer-info {
+        display: flex;
+        flex-direction: column;
+    }
+    .info-gob-wrap {
+        /* outline: 2px solid red; */
+        padding: 0;
+        display: block;
+        
+    }
+    .logo-wrapper {
+        /* outline: 5px solid black; */
+        display: flex;
+        flex: 1;
+    }
+    .footer-logo {
+        /* background-color: aqua; */
+        width: 100%;
+        padding: 40px;
+        margin: 0;
+    }
+    .info-gob {
+        padding: 0 0 35px 25px;
+    }
+  
+}
+   
+
