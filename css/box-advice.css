@@ -1,0 +1,52 @@
+/* ********************************************************** */
+/*                    BOX ADVISE SETTINGS                     */
+/* ********************************************************** */
+.box-advise-wrapper {
+    /* border: 1px solid rgb(0, 0, 0); */
+    display: flex;
+    justify-content: center;
+}
+.box-advise {
+    background-color: #D9EDF7;
+    border: 2px solid #BCE8F1;
+    width: 100%;
+    max-width: 85%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.advise-icon {
+    /* background-color: #C77C11; */
+    width: clamp(1em, 2.5vw, 1.02em);
+    fill: #31708f;
+    position: absolute;
+    margin-top: 3px;
+    margin-left: -25px;
+}
+.txt-advise {
+    color: #31708f;
+    position: relative;
+    text-align: center;
+    font-size: clamp(1em, 2.5vw, 1.2em);
+    line-height: 1;
+    line-height: 22px;
+    border-radius: 5px;
+    padding: 22px 30px 22px 40px;
+}
+/* ********************************************************** */
+/*                    SCREEN MEDIA QUERYS                     */
+/* ********************************************************** */
+@media only screen
+and (min-width : 0px) 
+and (max-width : 768px) {
+    .box-advise {
+        max-width: 90%;
+    }
+    .advise-icon {
+        margin-top: 2px;
+        margin-left: -22px;
+    }
+}
