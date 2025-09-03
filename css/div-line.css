@@ -1,0 +1,49 @@
+/* ********************************************************** */
+/*                   DIVISION LINE SETTINGS                   */
+/* ********************************************************** */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container0 {
+    /* border: 2px solid red;  */
+    display: flex;  
+    justify-content: center;
+}
+.container0_ {
+    /* border: 3px solid rgb(115, 106, 240); */
+    width: 85%;
+}
+.txt-detail {
+    /* background-color: #ac2c2c; */
+    color: #414041;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 26px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    min-width: 250px
+}
+/* .line-wrapper1 {
+    background-color: #B38E5D;
+} */
+.div-line1 {
+    border-bottom: 1px solid #e0dcdc;
+}
+.div-sqr1 {
+    background-color: #B38E5D;
+    border: 1px solid #B38E5D;
+    width: 35px;
+    height: 5px;
+}
+/* ********************************************************** */
+/*                     SCREEN MEDIA QUERYS                    */
+/* ********************************************************** */ 
+@media only screen
+and (min-width : 0) 
+and (max-width : 768px) {
+    .container0_ {
+        width: 90%;
+}
+}
