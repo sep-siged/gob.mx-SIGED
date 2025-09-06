@@ -360,7 +360,7 @@ and (max-width : 768px) {
     }
     /* 2. Creamos la flecha en el ::after de .info-rotulo */
     .info-rotulo::after {
-        content: "⮞";
+        content: "\01F782";
         font-size: 0.75em;
         display: inline-block;
         transition: transform 0.2s ease;
@@ -418,4 +418,5 @@ and (max-width : 576px) {
         /* background-color: aqua; */
         width: 25vh;
     }
+
 }
