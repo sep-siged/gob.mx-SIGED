@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&display=swap');
 /* ********************************************************** */
 /*                      BIG SCREEN TOPBAR                     */
 /* ********************************************************** */
@@ -319,7 +320,7 @@ and (max-width : 768px) {
     }
     .footer-logo {
         /* background-color: aqua; */
-        width: 20vw;
+        width: 14rem;
     }
     .info-rotulo, .siguenos {
         font-size: 18px;
@@ -330,7 +331,7 @@ and (max-width : 768px) {
     }
     .infotxt-padding {
         /* border: 1px solid red; */
-        padding-right: 49vw;
+        padding-right: 45vw;
     }
     .readmore {
         font-size: 14px;
@@ -360,7 +361,8 @@ and (max-width : 768px) {
     }
     /* 2. Creamos la flecha en el ::after de .info-rotulo */
     .info-rotulo::after {
-        content: "\01F782";
+        font-family: 'Noto Sans Symbols', sans-serif;
+        content: "\1F782";
         font-size: 0.75em;
         display: inline-block;
         transition: transform 0.2s ease;
@@ -416,7 +418,8 @@ and (max-width : 576px) {
     }
      .footer-logo {
         /* background-color: aqua; */
-        width: 25vh;
+        width: 16.5rem;
+     
     }
-
 }
+
