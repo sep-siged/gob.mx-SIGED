@@ -166,9 +166,12 @@
     border-top: 1px solid #A57F2C;
     margin-top: -300px;
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: none;
-    transition: 550ms ease-in-out;
     z-index: 15;
+    transition: 550ms ease-in-out;
 }
 .block-wrapper_ {
     height: 100%;
@@ -306,16 +309,19 @@ and (max-width : 768px) {
     .ribbon__ {
         display: flex;
         flex-direction: column;
-        top: 0;
-        left: 0;
-        right: 0;
-        /* opacity: .3; */
     }
-    /* .siged_ {
-        margin-left: 12px;
-    } */
-    /* .main-topbar_, .main-topbar__ {
-        display: none;
-    } */
-
 }   
+
+
+/* Sólo cuando el dispositivo está en horizontal y <= 768px */
+@media only screen and (orientation: landscape) and (max-width: 768px) {
+    .ribbon__ {
+        max-height: calc(100vh - 7.22em); /* resta la altura del header visible */
+        overflow-y: auto;                 /* scroll interno si se pasa de alto */
+        -webkit-overflow-scrolling: touch; /* scroll suave en iOS */
+    }
+    .ribbon__ {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
