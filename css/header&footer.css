@@ -349,19 +349,23 @@ and (max-width : 768px) {
         display: inline-flex;
         width: 100%; 
         align-items: center;
-        cursor: pointer;
+        pointer-events: none;      
+        cursor: default;    
     }
     .info-rotulo {
         display: flex;
         justify-content: space-between;
         align-items: center;
         max-width: 320px;
-        flex: 1;                  /* ocupa todo el espacio disponible */
+        flex: 1;                 
     }
     /* 2. Creamos la flecha en el ::after de .info-rotulo */
     .info-rotulo::after {
         content: "\276F"; /* ❯ */
         font-size: 0.75em;
+        padding: 0 7px 0 7px;
+        pointer-events: auto;
+        cursor: pointer;
         display: inline-block;
         transition: transform 0.2s ease;
     }
