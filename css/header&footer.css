@@ -134,9 +134,33 @@
     transition: 500ms;
     flex-shrink: 1;
 }
-
 .block-wrapper:hover {
     background-color: #B2924B;
+}
+.label-bs {
+    cursor: pointer;  
+}
+.info-rotulo-bs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+.info-rotulo-bs::after {
+    content: "\25BC"; /* ▼ */
+    font-size: .6em;
+    padding: 0 10px 0 10px;
+    pointer-events: auto;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.2s ease;
+    }
+.label-container-bs {
+    position: fixed;
+    top: 133px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    flex: 1;    
 }
 .block0 {
     /* border: 1px solid red;
@@ -338,12 +362,16 @@ and (max-width : 768px) {
     .decoration {
         padding: 0;
      }
+/* ********************************************************** */
+/*                   FOOTER DROPDOWN SETUP                    */
+/* ********************************************************** */
     .label-container {
         /* border: 1px solid red; */
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease-out;
-        flex: 1;    }
+        flex: 1;    
+    }
     /* 1. Convertimos .label en un botón inline-flex */
     .label {
         display: inline-flex;
@@ -363,7 +391,7 @@ and (max-width : 768px) {
     .info-rotulo::after {
         content: "\276F"; /* ❯ */
         font-size: 0.75em;
-        padding: 0 7px 0 7px;
+        padding: 0 10px 0 10px;
         pointer-events: auto;
         cursor: pointer;
         display: inline-block;
@@ -373,6 +401,7 @@ and (max-width : 768px) {
     .label.open .info-rotulo::after {
         transform: rotate(-270deg);
     }
+    /* ********************************************************** */
     .follow-container {
         /* border: 1px solid red; */
         display: grid;
@@ -420,7 +449,7 @@ and (max-width : 576px) {
     }
      .footer-logo {
         /* background-color: aqua; */
-        width: 16.5rem;
+        width: 15.7rem;
      
     }
 }
