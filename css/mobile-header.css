@@ -135,7 +135,7 @@
     background-color: #A57F2C;
     /* border: 5px solid rgb(101, 18, 209); */
     margin-top: 4.8em;
-    height: 50px;
+    height: 40px;
     left: 0;
     right: 0;
     top: 0;
@@ -174,19 +174,35 @@
     transition: 550ms ease-in-out;
 }
 .block-wrapper_ {
-    height: 100%;
+    /* border: 1px solid red; */
     display: flex;
     transition: 500ms;
 }
 .block-wrapper_:hover {
     background-color: #B2924B;
 }
+.block-wrapper_mod {
+    margin-bottom: 5px;
+}
 .block1 {
     /* border: 1px solid red; */
     /* background-color: rgb(171, 194, 24); */
-    padding: 11px 0 11px 15px;
+    padding: 9px 0 9px 15px;
     display: flex;
+}
+.block1-mod {
+    flex-direction: column;
+    background-color: aliceblue;
+    border: 2px solid #977732;
+    border-radius: 4px;
     align-items: center;
+    padding: 10px 15px 10px 15px;
+}
+.label-container-m {
+    border: 1px solid rgb(4, 0, 255);
+    background-color: #C0B392;
+    /* margin-top: 10px; */
+
 }
 .block-wrapper_:hover .home_ {
     opacity: 0;
@@ -233,6 +249,18 @@
 .block-wrapper_:hover .lowtitles_ {
     color: #C0B392;
 }
+.lowtitles_mod {
+    /* border: 2px solid red; */
+    color: #611232;
+    padding-right: 44px;
+    line-height: 30px;
+    width: 100%;
+}
+.lowtitles_mod:hover {
+    background-color: #C0B392;
+    border-radius: 3px;
+    opacity: 0.6;
+}
 /* **********************  SWITCHES  ************************ */
 #switch-menu, #switch-menu_ {
     position: absolute;
@@ -273,15 +301,47 @@
     transform: scale(1);
   }
 }
-/* .div {
-    width: 100vw;
-    padding: 150px 30px 30px 30px;
-    text-align: justify;
+/* ********************************************************** */
+/*              PRIVACITY ADVISE SWITCH BLOCK                 */
+/* ********************************************************** */
+.label-h {
+        /* border: 1px solid red; */
+        display: inline-flex;
+        width: 100%; 
+        align-items: center;
+        pointer-events: none;      
+        cursor: default;    
+    }
+
+.info-rotulo-h {
+        /* outline: 10px rgb(47, 0, 255); */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    /* 2. Creamos la flecha en el ::after de .info-rotulo */
+    .info-rotulo-h::after {
+        content: "\25BC"; /* ▼ */
+        font-size: .6em;
+        padding: 0 10px 0 10px;
+        pointer-events: auto;
+        cursor: pointer;
+        display: inline-block;
+        transition: transform 0.2s ease;
+    }
+    /* 3. Al tener la clase .open, cambiamos la flecha */
+    .label-h.open .info-rotulo-h::after {
+        transform: rotate(180deg);
+    }
+    .label-container-h {
+        /* border: 1px solid red; */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        flex: 1;    
 }
-.texto {
-    font-size: medium;
-    color: black;
-} */
+/* ********************************************************** */
+
 /* ********************************************************** */
 /*                    SCREEN MEDIA QUERYS                     */
 /* ********************************************************** */
@@ -312,7 +372,6 @@ and (max-width : 768px) {
     }
 }   
 
-
 /* Sólo cuando el dispositivo está en horizontal y <= 768px */
 @media only screen and (orientation: landscape) and (max-width: 768px) {
     .ribbon__ {
@@ -320,8 +379,11 @@ and (max-width : 768px) {
         overflow-y: auto;                 /* scroll interno si se pasa de alto */
         -webkit-overflow-scrolling: touch; /* scroll suave en iOS */
     }
-    .ribbon__ {
-        margin-left: 20px;
-        margin-right: 20px;
+    .block1 {
+        padding: 0 0 0 15px;
     }
+    .block1-mod {
+        padding: 10px 15px 10px 15px;
 }
+}
+
