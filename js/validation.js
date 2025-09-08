@@ -12,7 +12,6 @@
   const show = (e, t = "flex") => e && (e.style.display = t),
     hide = (e) => e && (e.style.display = "none");
 
-  // muestra loader si el folio coincide EXACTO
   window.load = () => {
     const v = f.value.trim();
     if (v.length === 36 && v === inv.innerHTML) {
@@ -21,34 +20,38 @@
     }
   };
 
-  // validaciones + loaders + diálogos + sección oculta
   const req = () => {
+    // 1) Sincronizamos invoice_ con el valor actual del input
+    window.getVal();
+
     const v = f.value.trim();
+    const invoiceText = inv.innerHTML.trim().toUpperCase();
+    const inputText = v.toUpperCase();
+
+    // 2) Validaciones
     if (!v) return show(d1);
     if (v.length !== 36) return show(d2);
-    if (v !== inv.innerHTML) {
+    if (inputText !== invoiceText) {
       show(l);
       setTimeout(() => hide(l), 2000);
       return setTimeout(() => show(d3), 3000);
     }
-    // caso válido: loader 3s, después sección oculta y scroll
- show(l);
 
- setTimeout(() => {
-   hide(l);
-   show(svs, "block");
-   svs.style.marginTop = "40px";
-   hide(hv);
+    // 3) Caso válido: loader y despliegue
+    show(l);
+    setTimeout(() => {
+      hide(l);
+      show(svs, "block");
+      svs.style.marginTop = "40px";
+      hide(hv);
 
-   const detalleElemento = document.querySelector(".txt-detail");
-
-   if (detalleElemento) {
-     // Ajuste fino: restar más margen para que no se pase del título
-     const offsetTop =
-       detalleElemento.getBoundingClientRect().top + window.scrollY - 120; // antes estaba -60
-     window.scrollTo({ top: offsetTop, behavior: "smooth" });
-   }
- }, 3000);
+      const detalleElemento = document.querySelector(".txt-detail");
+      if (detalleElemento) {
+        const offsetTop =
+          detalleElemento.getBoundingClientRect().top + window.scrollY - 120;
+        window.scrollTo({ top: offsetTop, behavior: "smooth" });
+      }
+    }, 3000);
   };
 
   svb.onclick = req;
@@ -58,12 +61,10 @@
     show(hv);
   };
 
-  // cierres de diálogos
   ["1", "2", "3"].forEach(
     (n) => (window["pushOk" + n] = () => hide(d("dialog-box" + n)))
   );
 
-  // borrar datos
   window.erase = () => {
     ["fullName", "invoiceData", "dateData"].forEach((k) =>
       localStorage.removeItem(k)
