@@ -166,6 +166,15 @@
     .label-bs.open .info-rotulo-bs::after {
         transform: rotate(180deg);
     }
+.block1-mod1 {
+    flex-direction: column;
+    background-color: aliceblue;
+    border: 2px solid #977732;
+    border-radius: 4px;
+    align-items: center;
+    padding: 10px 15px;
+    }
+
 .block0 {
     /* border: 1px solid red;
     background-color: rgb(171, 194, 24); */
@@ -222,6 +231,16 @@
 .lowtitles {
     padding-left: 4px;
     transition: 300ms;
+}
+.lowtitles_mod1 {
+    /* border: 2px solid red; */
+    color: #611232;
+    width: 100%;
+}
+.lowtitles_mod1:hover {
+    background-color: #C0B392;
+    border-radius: 3px;
+    opacity: 0.6;
 }
 .block-wrapper:hover .lowtitles {
     color: #D3BF97;
