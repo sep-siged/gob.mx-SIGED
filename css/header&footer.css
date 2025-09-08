@@ -161,7 +161,11 @@
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     flex: 1;    
-}
+    }
+    /* 3. Al tener la clase .open, cambiamos la flecha */
+    .label-bs.open .info-rotulo-bs::after {
+        transform: rotate(180deg);
+    }
 .block0 {
     /* border: 1px solid red;
     background-color: rgb(171, 194, 24); */
