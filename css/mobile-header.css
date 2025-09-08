@@ -190,7 +190,7 @@
     padding: 9px 0 9px 15px;
     display: flex;
 }
-.block1-mod {
+.block1-mod2 {
     flex-direction: column;
     background-color: aliceblue;
     border: 2px solid #977732;
@@ -249,14 +249,14 @@
 .block-wrapper_:hover .lowtitles_ {
     color: #C0B392;
 }
-.lowtitles_mod {
+.lowtitles_mod2 {
     /* border: 2px solid red; */
     color: #611232;
     padding-right: 44px;
     line-height: 30px;
     width: 100%;
 }
-.lowtitles_mod:hover {
+.lowtitles_mod2:hover {
     background-color: #C0B392;
     border-radius: 3px;
     opacity: 0.6;
@@ -382,7 +382,7 @@ and (max-width : 768px) {
     .block1 {
         padding: 0 0 0 15px;
     }
-    .block1-mod {
+    .block1-mod2 {
         padding: 10px 15px 10px 15px;
 }
 }
