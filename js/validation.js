@@ -36,6 +36,11 @@
       setTimeout(() => hide(l), 2000);
       return setTimeout(() => show(d3), 3000);
     }
+  // SE COMPLEMENTA CON EL CÓDIGO DE INFOBOXES TEXT ANIMATION
+    document.querySelectorAll(".showup").forEach((el) => {
+      el.classList.remove("showup--visible");
+    window.showupObserver.observe(el);
+    });
 
     // 3) Caso válido: loader y despliegue
     show(l);
@@ -45,11 +50,22 @@
       svs.style.marginTop = "40px";
       hide(hv);
 
+      // 2) Primer scroll a .txt-detail
       const detalleElemento = document.querySelector(".txt-detail");
       if (detalleElemento) {
-        const offsetTop =
+        const offsetTxt =
           detalleElemento.getBoundingClientRect().top + window.scrollY - 120;
-        window.scrollTo({ top: offsetTop, behavior: "smooth" });
+        window.scrollTo({ top: offsetTxt, behavior: "smooth" });
+
+        // 3) Segundo scroll a .square-wrapper tras otros 3 s
+        setTimeout(() => {
+          const wrapper = document.querySelector(".square-wrapper");
+          if (!wrapper) return;
+
+          const offsetWrapper =
+            wrapper.getBoundingClientRect().top + window.scrollY - 150;
+          window.scrollTo({ top: offsetWrapper, behavior: "smooth" });
+        }, 3000);
       }
     }, 3000);
   };
@@ -74,26 +90,25 @@
   };
 })();
 
-// ************************ INFOBOXES TEXT ANIMATION *****************************
+// ****************** INFOBOXES TEXT ANIMATION ******************
 document.addEventListener("DOMContentLoaded", () => {
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("showup--visible");
-          obs.unobserve(entry.target); // deja de observarlo para que sea sólo una vez
-        }
-      });
-    },
-    {
-      root: null,
-      threshold: 1.0, // dispara cuando el 10% del elemento está en pantalla
-      rootMargin: "0px 0px -10% 0px",
-    }
-  );
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("showup--visible")
+        observer.unobserve(entry.target)
+      }
+    })
+  }, {
+    root: null,
+    threshold: 1.0,
+    rootMargin: "0px 0px -10% 0px",
+  })
 
-  // Selecciona todos los .showup y empieza a observarlos
-  document.querySelectorAll(".showup").forEach((el) => {
-    observer.observe(el);
-  });
-});
+  document.querySelectorAll(".showup").forEach(el => {
+    observer.observe(el)
+  })
+
+  // Exponemos el observer para reiniciar las animaciones más tarde
+  window.showupObserver = observer
+})
