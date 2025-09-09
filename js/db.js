@@ -85,15 +85,24 @@
         output.hideInfo.style.display = "none";
         output.showVal.style.marginTop = "40px";
         const detalleElemento = document.querySelector(".txt-detail");
-        if (detalleElemento) {
-          setTimeout(() => {
-            const offsetTop =
-              detalleElemento.getBoundingClientRect().top +
-              window.scrollY -
-              120;
-            window.scrollTo({ top: offsetTop, behavior: "smooth" });
-          }, 1000); 
-        }
+       if (detalleElemento) {
+         setTimeout(() => {
+           // Primer scroll a .txt-detail
+           const offsetTop =
+             detalleElemento.getBoundingClientRect().top + window.scrollY - 120;
+           window.scrollTo({ top: offsetTop, behavior: "smooth" });
+
+           // Segundo scroll a .square-wrapper tras 3 s
+           setTimeout(() => {
+             const wrapper = document.querySelector(".square-wrapper");
+             if (!wrapper) return;
+
+             const offsetWrapper =
+               wrapper.getBoundingClientRect().top + window.scrollY - 150;
+             window.scrollTo({ top: offsetWrapper, behavior: "smooth" });
+           }, 3000);
+         }, 1000);
+       }
       } else {
         // opcional: feedback al usuario de folio no válido
         // hideSection();
