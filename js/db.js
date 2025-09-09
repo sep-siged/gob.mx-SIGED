@@ -57,7 +57,7 @@
       output.authority.textContent = person.AUTORIDAD;
       output.promedy.textContent = person.PROMEDIO;
       output.promedy2.textContent = person.PROMEDIO2;
-       output.period.textContent = person.PERIODO;
+      output.period.textContent = person.PERIODO;
       output.date.textContent = `${person.FECHA} ${person.HORA}`;
 
       // Importante: NO tocar display aquí. El despliegue lo controla:
@@ -84,12 +84,16 @@
         output.showVal.style.display = "block";
         output.hideInfo.style.display = "none";
         output.showVal.style.marginTop = "40px";
-              const detalleElemento = document.querySelector(".txt-detail");
-      if (detalleElemento) {
-        const offsetTop =
-          detalleElemento.getBoundingClientRect().top + window.scrollY - 120;
-        window.scrollTo({ top: offsetTop, behavior: "smooth" });
-      }
+        const detalleElemento = document.querySelector(".txt-detail");
+        if (detalleElemento) {
+          setTimeout(() => {
+            const offsetTop =
+              detalleElemento.getBoundingClientRect().top +
+              window.scrollY -
+              120;
+            window.scrollTo({ top: offsetTop, behavior: "smooth" });
+          }, 1000); 
+        }
       } else {
         // opcional: feedback al usuario de folio no válido
         // hideSection();
