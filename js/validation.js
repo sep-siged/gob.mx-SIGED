@@ -73,3 +73,27 @@
     ["getName", "getInvoice", "getDate"].forEach((id) => (d(id).value = ""));
   };
 })();
+
+// ************************ INFOBOXES TEXT ANIMATION *****************************
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("showup--visible");
+          obs.unobserve(entry.target); // deja de observarlo para que sea sólo una vez
+        }
+      });
+    },
+    {
+      root: null,
+      threshold: 1.0, // dispara cuando el 10% del elemento está en pantalla
+      rootMargin: "0px 0px -10% 0px",
+    }
+  );
+
+  // Selecciona todos los .showup y empieza a observarlos
+  document.querySelectorAll(".showup").forEach((el) => {
+    observer.observe(el);
+  });
+});
