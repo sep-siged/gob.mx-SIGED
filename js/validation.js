@@ -7,7 +7,7 @@
     hv = d("hideInfo"),
     fr = d("form-reg"),
     [svb, hvb] = [d("showVal"), d("hideVal")],
-    [d1, d2, d3] = ["dialog-box1", "dialog-box2", "dialog-box3"].map(d);
+    [d1, d2, d4] = ["dialog-box1", "dialog-box2", "dialog-box4"].map(d);
 
   const show = (e, t = "flex") => e && (e.style.display = t),
     hide = (e) => e && (e.style.display = "none");
@@ -32,10 +32,30 @@
     if (!v) return show(d1);
     if (v.length !== 36) return show(d2);
     if (inputText !== invoiceText) {
+      // 0) Si previamente había una búsqueda válida, la ocultamos
+      hide(svs);
+      hide(fr);
+      show(hv);
+
+      // 1) Loader y hide tras 2 s
       show(l);
       setTimeout(() => hide(l), 2000);
-      return setTimeout(() => show(d3), 3000);
+
+      // 2) Mostrar dialog-box4 + scroll tras 3 s
+      return setTimeout(() => {
+        // aparecer el mensaje de "no encontrado"
+        show(d4, "initial");
+
+        // hacer scroll al contenedor de error
+        const dialog = document.getElementById("dialog-box4");
+        if (dialog) {
+          const offsetTop =
+            dialog.getBoundingClientRect().top + window.scrollY - 120;
+          window.scrollTo({ top: offsetTop, behavior: "smooth" });
+        }
+      }, 3000);
     }
+
   // SE COMPLEMENTA CON EL CÓDIGO DE INFOBOXES TEXT ANIMATION
     document.querySelectorAll(".showup").forEach((el) => {
       el.classList.remove("showup--visible");
@@ -46,12 +66,12 @@
     show(l);
     setTimeout(() => {
       hide(l);
-      show(svs, "block");
-      svs.style.marginTop = "40px";
+      show(svs, "initial");
+      // svs.style.marginTop = "40px";
       hide(hv);
 
-      // 2) Primer scroll a .txt-detail
-      const detalleElemento = document.querySelector(".txt-detail");
+      // 2) Primer scroll a .txt-showinfo
+      const detalleElemento = document.querySelector(".txt-showinfo");
       if (detalleElemento) {
         const offsetTxt =
           detalleElemento.getBoundingClientRect().top + window.scrollY - 120;
@@ -75,6 +95,7 @@
     hide(svs);
     hide(fr);
     show(hv);
+    hide(d("dialog-box4"));
   };
 
   ["1", "2", "3"].forEach(
