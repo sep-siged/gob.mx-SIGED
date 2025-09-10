@@ -84,30 +84,59 @@
         output.showVal.style.display = "block";
         output.hideInfo.style.display = "none";
         output.showVal.style.marginTop = "40px";
-        const detalleElemento = document.querySelector(".txt-detail");
-       if (detalleElemento) {
-         setTimeout(() => {
-           // Primer scroll a .txt-detail
-           const offsetTop =
-             detalleElemento.getBoundingClientRect().top + window.scrollY - 120;
-           window.scrollTo({ top: offsetTop, behavior: "smooth" });
+        const detalleElemento = document.querySelector(".txt-showinfo");
+        if (detalleElemento) {
+          setTimeout(() => {
+            // Primer scroll a .txt-showinfo
+            const offsetTop =
+              detalleElemento.getBoundingClientRect().top +
+              window.scrollY -
+              120;
+            window.scrollTo({ top: offsetTop, behavior: "smooth" });
 
-           // Segundo scroll a .square-wrapper tras 3 s
-           setTimeout(() => {
-             const wrapper = document.querySelector(".square-wrapper");
-             if (!wrapper) return;
+            // Segundo scroll a .square-wrapper tras 3 s
+            setTimeout(() => {
+              const wrapper = document.querySelector(".square-wrapper");
+              if (!wrapper) return;
 
-             const offsetWrapper =
-               wrapper.getBoundingClientRect().top + window.scrollY - 150;
-             window.scrollTo({ top: offsetWrapper, behavior: "smooth" });
-           }, 3000);
-         }, 1000);
-       }
+              const offsetWrapper =
+                wrapper.getBoundingClientRect().top + window.scrollY - 150;
+              window.scrollTo({ top: offsetWrapper, behavior: "smooth" });
+            }, 3000);
+          }, 1000);
+        }
       } else {
-        // opcional: feedback al usuario de folio no válido
-        // hideSection();
-        console.warn("Folio no encontrado en la base de datos:", folio);
+        // 1) Feedback al usuario por valor no encontrado
+        setTimeout(() => {
+          const dialog = document.getElementById("dialog-box4");
+          dialog.style.display = "initial";
+
+          // 2) Enlazar "Volver a intentarlo" al reset original + scroll top con 0.5 s de delay
+          const retryBtn = dialog.querySelector(".btn-reset-mod");
+          const originalReset = document.getElementById("hideVal");
+          if (retryBtn && originalReset) {
+            retryBtn.addEventListener("click", () => {
+              originalReset.click();
+              setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }, 200);
+            });
+          }
+        }, 1500);
+
+        // 3) Scroll suave a .txt-detail tras 1.8 s
+        setTimeout(() => {
+          const detalleElemento = document.querySelector(".txt-detail");
+          if (detalleElemento) {
+            const offsetTop =
+              detalleElemento.getBoundingClientRect().top +
+              window.scrollY -
+              120;
+            window.scrollTo({ top: offsetTop, behavior: "smooth" });
+          }
+        }, 1800);
       }
+
     }
 
     // 7. Listener de input: sugerencias, prellenado y regla para campo vacío
