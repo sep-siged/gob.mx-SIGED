@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-    <div id="dialog-box3" class="loading-wrapper2">
+    <!-- <div id="dialog-box3" class="loading-wrapper2">
         <div class="main-box">
             <div class="title-box">
                 <h3>SEP | SIGED</h2>
@@ -88,7 +88,7 @@
                 <button class="aceptar" onclick="pushOk3()">Aceptar</button>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- ********************************************************* -->
     <!--                    ACCESIBILLITY PANEL                    -->
@@ -544,9 +544,33 @@
                     </a>
                 </div>            
             </div>
-           
         </div>
-        
+        <!-- ********************************************************* -->
+        <!--                       BOX ADVISE ERROR                    -->
+        <!-- ********************************************************* -->
+         <div class="notfound-container" id="dialog-box4">
+            <div class="container0">
+                <div class="container0_" title="Detalle del documento">
+                    <h1 class="txt-detail"><span class="txt-detail-span">Información no encontrada</span></h1>
+                    <div class="line-wrapper1">
+                        <div class="div-line1"></div>
+                        <div class="div-sqr1"></div>
+                    </div>   
+                </div>
+            </div>                
+            <div id="showVal_error" class="container-error">
+                <div class="boxerror">
+                    <div class="boxerror-inner">
+                        <p class="txt-error1">La información solicitada no se encuentra en nuestros registros.</p>
+                    </div>
+                    <div class="boxerror-inner">
+                        <p class="txt-error2">Verifica los datos que ingresaste y vuelve a intentarlo.</p>
+                    </div>
+                    <button type="reset" class="btn-form btn-reset ng-binding ng-bindin-mod btn-reset-mod">Volver a intentarlo
+                    </button>
+                </div>    
+            </div> 
+        </div>
         <!-- ********************************************************* -->
         <!--                          BOX ADVISE                       -->
         <!-- ********************************************************* -->
@@ -564,7 +588,7 @@
             
             <div class="container0">
                 <div class="container0_" title="Detalle del documento">
-                    <h1 class="txt-detail"><span class="txt-detail-span">Detalle del documento</span></h1>
+                    <h1 class="txt-detail txt-showinfo"><span class="txt-detail-span">Detalle del documento</span></h1>
                     <div class="line-wrapper1">
                         <div class="div-line1"></div>
                         <div class="div-sqr1" onClick='handleShowElement__()'></div>
@@ -776,4 +800,3 @@
         <script src="js/validation.js"></script>
 </body>
 </html>
-
