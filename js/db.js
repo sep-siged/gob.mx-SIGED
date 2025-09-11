@@ -110,21 +110,9 @@
         setTimeout(() => {
           const dialog = document.getElementById("dialog-box4");
           dialog.style.display = "initial";
-
-          // 2) Enlazar "Volver a intentarlo" al reset original + scroll top con 0.5 s de delay
-          const retryBtn = dialog.querySelector(".btn-reset-mod");
-          const originalReset = document.getElementById("hideVal");
-          if (retryBtn && originalReset) {
-            retryBtn.addEventListener("click", () => {
-              originalReset.click();
-              setTimeout(() => {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }, 200);
-            });
-          }
         }, 1500);
 
-        // 3) Scroll suave a .txt-detail tras 1.8 s
+        // 2) Scroll suave a .txt-detail tras 1.8 s
         setTimeout(() => {
           const detalleElemento = document.querySelector(".txt-detail");
           if (detalleElemento) {
@@ -136,7 +124,6 @@
           }
         }, 1800);
       }
-
     }
 
     // 7. Listener de input: sugerencias, prellenado y regla para campo vacío
@@ -150,6 +137,17 @@
       }
     });
 
-    // Aquí podrías mantener otros listeners o inicializadores que ya tengas…
+    // Aquí otros listeners o inicializadores que ya tengas…
+  }
+  // Función gatillo de .btn-reset-mod que refleja al Botón RESET (hideVal)
+  const retryBtn = document.querySelector("#dialog-box4 .btn-reset-mod");
+  const originalReset = document.getElementById("hideVal");
+  if (retryBtn && originalReset) {
+    retryBtn.addEventListener("click", () => {
+      originalReset.click();
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 200);
+    });
   }
 })();
