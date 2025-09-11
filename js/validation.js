@@ -21,6 +21,9 @@
   };
 
   const req = () => {
+    // 0) NUEVO: oculta cualquier “no encontrado” previo antes de validar
+    hide(d4);
+
     // 1) Sincronizamos invoice_ con el valor actual del input
     window.getVal();
 
@@ -56,10 +59,10 @@
       }, 3000);
     }
 
-  // SE COMPLEMENTA CON EL CÓDIGO DE INFOBOXES TEXT ANIMATION
+    // SE COMPLEMENTA CON EL CÓDIGO DE INFOBOXES TEXT ANIMATION
     document.querySelectorAll(".showup").forEach((el) => {
       el.classList.remove("showup--visible");
-    window.showupObserver.observe(el);
+      window.showupObserver.observe(el);
     });
 
     // 3) Caso válido: loader y despliegue
