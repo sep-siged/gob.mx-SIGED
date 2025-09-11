@@ -1,5 +1,14 @@
 (function () {
   // =========================================
+  // CONSTANTES DE CACHÉ (TTL + VERSIÓN MANUAL)
+  // =========================================
+  const CACHE_KEY = "cache_personas";
+  const CACHE_TS_KEY = "cache_personas_ts";
+  const CACHE_TTL_MS = 1000 * 60 * 60 * 24; // 24 horas
+  const CACHE_VERSION = "v1"; // Incrementar al actualizar personas.json
+  const CACHE_VER_KEY = "cache_personas_version";
+
+  // =========================================
   // 0. ARRANQUE AL CARGAR EL DOM
   // =========================================
   document.addEventListener("DOMContentLoaded", init);
@@ -32,7 +41,7 @@
         empty: d("dialog-box1"),
         wrongLength: d("dialog-box2"),
         notFound: d("dialog-box4"),
-        other: d("dialog-box3"), // opcional, no rompe nada
+        other: d("dialog-box3"), // opcional (compatibilidad)
       },
 
       txtShowInfo: ".txt-showinfo",
@@ -42,6 +51,7 @@
       retryBtn: "#dialog-box4 .btn-reset-mod",
     };
 
+    // Compatibilidad con otros scripts que lean document.form
     const f = document.form?.folio || DOM.formInput;
 
     //
@@ -63,12 +73,15 @@
     };
 
     const UI = {
+      // — Mostrar/ocultar
       show(el, disp = "flex") {
         if (el) el.style.display = disp;
       },
       hide(el) {
         if (el) el.style.display = "none";
       },
+
+      // — Scroll helpers
       scrollTo(target, offset) {
         const el =
           typeof target === "string" ? document.querySelector(target) : target;
@@ -76,7 +89,7 @@
         const top =
           el.getBoundingClientRect().top +
           window.scrollY +
-          (offset || CONST.OFFSET_TXT_SHOWINFO);
+          (offset ?? CONST.OFFSET_TXT_SHOWINFO);
         window.scrollTo({ top, behavior: CONST.SCROLL_BEHAVIOR });
       },
       scrollSequence(step1, off1, delay1, step2, off2, delay2) {
@@ -85,6 +98,8 @@
           setTimeout(() => UI.scrollTo(step2, off2), delay2);
         }, delay1);
       },
+
+      // — Debounce
       debounce(fn, delay = CONST.SEARCH_DEBOUNCE) {
         let t;
         return function (...args) {
@@ -95,36 +110,63 @@
     };
 
     //
-    // 3. MÓDULO DE DATOS CON MÍNIMA TOLERANCIA A FALLOS
+    // 3. MÓDULO DE DATOS CON CACHÉ EN localStorage (TTL + VERSIÓN)
     //
     const Data = {
       personas: [],
       map: new Map(),
+
       async load() {
         try {
-          this.personas = await fetch("data/personas.json").then((r) =>
-            r.json()
-          );
-        } catch {
+          // Invalidar caché si la versión cambió
+          const savedVersion = localStorage.getItem(CACHE_VER_KEY);
+          if (savedVersion !== CACHE_VERSION) {
+            localStorage.removeItem(CACHE_KEY);
+            localStorage.removeItem(CACHE_TS_KEY);
+            localStorage.setItem(CACHE_VER_KEY, CACHE_VERSION);
+          }
+
+          // Intentar leer del caché si está fresco
+          const rawCache = localStorage.getItem(CACHE_KEY);
+          const cacheTs = parseInt(localStorage.getItem(CACHE_TS_KEY), 10) || 0;
+          const isFresh = Date.now() - cacheTs < CACHE_TTL_MS;
+
+          if (rawCache && isFresh) {
+            this.personas = JSON.parse(rawCache);
+            console.info("Data load: usando cache localStorage");
+          } else {
+            // Fetch y guardar en caché
+            const res = await fetch("data/personas.json");
+            this.personas = await res.json();
+            localStorage.setItem(CACHE_KEY, JSON.stringify(this.personas));
+            localStorage.setItem(CACHE_TS_KEY, String(Date.now()));
+            console.info("Data load: fetch y guardado en cache");
+          }
+        } catch (err) {
+          console.warn("Data load falló, inicializando array vacío", err);
           this.personas = [];
         }
       },
+
       initMap() {
         this.map = new Map(this.personas.map((p) => [p.ID?.trim() || "", p]));
       },
+
       getById(id) {
         return this.map.get((id || "").trim());
       },
+
       search(term) {
         const t = (term || "").trim().toUpperCase();
         return this.personas.filter((p) => p.ID?.toUpperCase?.().includes(t));
       },
     };
+
     await Data.load();
     Data.initMap();
 
     //
-    // 4. SEARCH Y RELLENO
+    // 4. SEARCH Y RELLENO (API global respetada)
     //
     window.searchFilter = UI.debounce(() => {
       console.log("Sugerencias:", Data.search(DOM.formInput.value).slice(0, 5));
@@ -143,7 +185,7 @@
     };
 
     //
-    // 5. HIDE SECTION
+    // 5. HIDE SECTION (restaura display original)
     //
     const originalHideDisp = getComputedStyle(DOM.hideInfoCont).display;
     const hideSection = () => {
@@ -250,7 +292,7 @@
         }, CONST.NOTFOUND_SHOW_DELAY);
       }
 
-      // reinicio animaciones
+      // Reinicio animaciones
       showupElements.forEach((el) => {
         el.classList.remove("showup--visible");
         window.showupObserver.observe(el);
@@ -313,11 +355,7 @@
           }
         });
       },
-      {
-        root: null,
-        threshold: 1.0,
-        rootMargin: "0px 0px -10% 0px",
-      }
+      { root: null, threshold: 1.0, rootMargin: "0px 0px -10% 0px" }
     );
 
     showupElements.forEach((el) => observer.observe(el));
