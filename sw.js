@@ -67,7 +67,6 @@ const PRECACHE_URLS = [
   "/js/input-form-setup.js",
   "/js/nprogress.js",
   "/logos/gobmex-logo.svg",
-  "/logos/logo_bco-sep.png",
 ];
 
 self.addEventListener("install", (event) => {
@@ -91,4 +90,5 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
+
 
