@@ -4,11 +4,6 @@ const CACHE_NAME = "app-cache-v1";
 const PRECACHE_URLS = [
   "/documentos.html",
   "/index.html",
-  "/catalogue/CATALOGO_CENTRO_TRABAJO_01_16_CSV.zip",
-  "/catalogue/CATALOGO_CENTRO_TRABAJO_01_16_TXT.zip",
-  "/catalogue/CATALOGO_CENTRO_TRABAJO_17_32_CSV.zip",
-  "/catalogue/CATALOGO_CENTRO_TRABAJO_17_32_TXT.zip",
-  "/catalogue/CENTROS_TRABAJO_DICDAT.xlsx",
   "/css/accesibillity-menu.css",
   "/css/bg-image.css",
   "/css/box-advice.css",
