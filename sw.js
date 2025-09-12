@@ -76,22 +76,24 @@ const PRECACHE_URLS = [
   "/logos/logo_bco-sep.png",
 ];
 
-self.addEventListener('install', event => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches
-      .open(CACHE_NAME)
-      .then(cache => cache.addAll(PRECACHE_URLS))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS))
   );
-  // sin skipWaiting, sin clients.claim
+  self.skipWaiting(); // Forza que el SW pase directamente a "activated"
 });
 
-self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    self.clients.claim() // Toma control de todas las páginas dentro de su scope
+  );
+});
 
+self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return; // ← tu if queda igual
   event.respondWith(
-    caches.match(event.request).then(cached => {
-      // si existe en cache, lo devuelve; si no, va a red  
-      return cached || fetch(event.request).then(networkRes => networkRes);
+    caches.match(event.request).then((cached) => {
+      return cached || fetch(event.request);
     })
   );
 });
