@@ -63,7 +63,6 @@ const PRECACHE_URLS = [
   "/images/bg1.png",
   "/js/accesibillity-toggle.js",
   "/js/dropdown_setup.js",
-  "/js/infoboxes.js",
   "/js/input-form-setup.js",
   "/js/nprogress.js",
   "/logos/gobmex-logo.svg",
@@ -90,5 +89,4 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
-
 
